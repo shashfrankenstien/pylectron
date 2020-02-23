@@ -35,6 +35,7 @@ def install():
     elec_zippy.extractall(path=config.ELECTRON_DIR)
     for f in os.listdir(config.ELECTRON_DIR):
         print(f)
+    build()
 
 
 def build():

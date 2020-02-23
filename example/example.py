@@ -1,4 +1,4 @@
-from pylectron.core import Application
+from pylectron import Application
 import os, sys
 import time
 
