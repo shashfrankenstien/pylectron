@@ -46,19 +46,15 @@ def build():
         os.chdir(config.APPLICATION_DIR)
         subprocess.Popen(["npm", "install"]).wait()
         os.chdir(cur_path)
+    print("building app.asar ..")
     subprocess.Popen(['asar', 'pack', config.APPLICATION_DIR, config.ELECTRON_ASAR_DEPLOY_PATH]).wait()
+    print("copied app.asar to electron_build/resources")
 
 
 def clean():
     if os.path.isdir(config.NODE_MODULES): shutil.rmtree(config.NODE_MODULES)
     if os.path.isfile(config.ELECTRON_ASAR_DEPLOY_PATH): os.remove(config.ELECTRON_ASAR_DEPLOY_PATH)
 
-
-# def test():
-#     proc = subprocess.Popen([os.path.join(ELECTRON_DIR, 'electron')])
-#     time.sleep(1)
-#     print(requests.get("http://localhost:3000/window/open").text)
-#     proc.wait()
 
 
 def main():

@@ -1,15 +1,13 @@
 from pylectron.core import Application
-import os
+import os, sys
 import time
 
+WORKING_DIR = getattr(sys, '_MEIPASS', os.getcwd()) # Check first for PyInstaller temp directory
 
 if __name__ == "__main__":
 
     app = Application()
 
-    app.new_window(500, 300, os.path.join(os.getcwd(), "example.html"))
+    app.new_window(500, 300, os.path.join(WORKING_DIR, "static", "example.html"))
 
-    # win = Window(200, 200, None)
-    # win.open()
-    time.sleep(10)
-    app.close()
+    app.wait()

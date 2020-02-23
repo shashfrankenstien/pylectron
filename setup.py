@@ -1,4 +1,8 @@
 from distutils.core import setup
+import subprocess
+
+subprocess.call(['npm', 'install', '-g', 'asar'])
+
 
 setup(
     name='pylectron',

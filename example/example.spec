@@ -3,10 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['example.py'], # pylint: disable=undefined-variable
-             pathex=['/home/shashankgopikrishna/projects/pylectron'],
+a = Analysis(['example.py'],
              binaries=[],
-             datas=[("example.html", "example.html")],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -15,14 +13,15 @@ a = Analysis(['example.py'], # pylint: disable=undefined-variable
              win_private_assemblies=False,
              cipher=block_cipher,
              noarchive=False)
-pyz = PYZ(a.pure, a.zipped_data, # pylint: disable=undefined-variable
+pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
-exe = EXE(pyz, # pylint: disable=undefined-variable
+exe = EXE(pyz,
           a.scripts,
           a.binaries,
           a.zipfiles,
           a.datas,
-          Tree("electron_build", prefix="electron_build"), # pylint: disable=undefined-variable
+          Tree("electron_build", prefix="electron_build"),
+          Tree("static", prefix="static"),
           [],
           name='example',
           debug=False,
