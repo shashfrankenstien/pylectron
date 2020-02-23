@@ -1,7 +1,25 @@
 from distutils.core import setup
 import subprocess
 
-subprocess.call(['npm', 'install', '-g', 'asar'])
+
+from setuptools.command.develop import develop
+from setuptools.command.install import install
+
+
+def install_asarjs():
+    subprocess.call(["sudo", "npm", "install", "-g", "asar"])
+
+class PostDevelopCommand(develop):
+    """Post-installation for development mode."""
+    def run(self):
+        develop.run(self)
+        install_asarjs()
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        install.run(self)
+        install_asarjs()
 
 
 setup(
@@ -14,5 +32,9 @@ setup(
     description='python3 electron GUI',
     package_data={
         'pylectron': ['js_app/*'],
+    },
+    cmdclass={
+        'develop': PostDevelopCommand,
+        'install': PostInstallCommand,
     },
 )
