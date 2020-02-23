@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const Communicator = require("./comms.js.js.js")
+const Communicator = require("./comms.js")
 const comms = new Communicator()
 
 

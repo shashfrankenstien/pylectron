@@ -2,3 +2,4 @@ __pycache__
 electron_build
 dist
 build
+*.egg-info
