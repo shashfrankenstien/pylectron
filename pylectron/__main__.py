@@ -33,6 +33,8 @@ def install():
     elec_bin = BytesIO(res.content)
     elec_zippy = ZipFileWithPermissions(elec_bin)
     elec_zippy.extractall(path=config.ELECTRON_DIR)
+    for f in os.listdir(config.ELECTRON_DIR):
+        print(f)
 
 
 def build():

@@ -8,4 +8,7 @@ setup(
     packages=['pylectron'],
     entry_points={ 'console_scripts': ['pylectron = pylectron.__main__:main' ] },
     description='python3 electron GUI',
+    package_data={
+        'pylectron': ['js_app/*'],
+    },
 )
