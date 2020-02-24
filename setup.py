@@ -7,7 +7,12 @@ from setuptools.command.install import install
 
 
 def install_asarjs():
-    subprocess.call(["sudo", "npm", "install", "-g", "asar"])
+    try:
+        subprocess.call(["sudo", "npm", "install", "-g", "asar"])
+    except Exception as e:
+        print(e)
+        subprocess.call(["npm", "install", "-g", "asar"])
+
 
 class PostDevelopCommand(develop):
     """Post-installation for development mode."""

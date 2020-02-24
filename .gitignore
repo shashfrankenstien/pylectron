@@ -1,4 +1,5 @@
 __pycache__
+.vscode
 electron_build
 dist
 build
